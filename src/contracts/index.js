@@ -1,6 +1,6 @@
 const abiCastleDAO = require('./abis/castledao.json');
 const abiRealm = require('./abis/realm-abi.json');
-const abiRealm = require('./abis/bunnygang.json');
+const abiBunnyGang = require('./abis/bunnygang.json');
 const web3 = require('../web3')
 
 const contractAddresses = [{
@@ -21,7 +21,7 @@ const contractAddresses = [{
     // Used to count transfer events since
     firstBlock: '431967',
     abi: abiBunnyGang
-]
+}]
 
 const contracts = contractAddresses.map(c => {
     const contract = new web3.eth.Contract(c.abi, c.address);
