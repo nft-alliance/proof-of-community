@@ -32,7 +32,13 @@ async function getPoc() {
         console.log('Fetching info for ' + contract.name);
         const items = await fetchBatch(contract.contract, contract.firstBlock, lastBlock, [] )
         const tokenIds = items.map(i => i.returnValues.tokenId);
-        const owners = await Promise.all(tokenIds.map(async tokenId => {
+        const reducedIds = []
+        tokenIds.forEach(id => {
+            if (!reducedIds.includes(id)) {
+                reducedIds.push(id)
+            }
+        })
+        const owners = await Promise.all(reducedIds.map(async tokenId => {
             const owner =  await contract.contract.methods.ownerOf(tokenId).call()
             return {
                 owner,
@@ -41,7 +47,6 @@ async function getPoc() {
         }))
 
         console.log('End fetching info for ' + contract.name);
-        console.log(owners)
         return {
             name: contract.name,
             owners
