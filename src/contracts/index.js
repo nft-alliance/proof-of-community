@@ -1,6 +1,7 @@
 const abiCastleDAO = require('./abis/castledao.json');
 const abiRealm = require('./abis/realm-abi.json');
 const abiBunnyGang = require('./abis/bunnygang.json');
+const abiRandomwalk = require('./abis/abirandomwalk.json');
 const web3 = require('../web3')
 
 const contractAddresses = [{
@@ -21,6 +22,12 @@ const contractAddresses = [{
     // Used to count transfer events since
     firstBlock: '431967',
     abi: abiBunnyGang
+},{
+    name: 'RandomWalkNFT',
+    address: '0x895a6F444BE4ba9d124F61DF736605792B35D66b',
+    // Used to count transfer events since
+    firstBlock: '2910155',
+    abi: abiRandomwalk
 }]
 
 const contracts = contractAddresses.map(c => {
